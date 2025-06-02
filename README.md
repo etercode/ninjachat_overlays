@@ -6,7 +6,7 @@ Bu projede, canlı sohbet sisteminizde kullanıcı takma adlarına dinamik renkl
 
 Aşağıdaki HTML dosyaları belirli bir görselle eşleşir:
 
-### 1. [`colorful_bg_nick_with_text_bg.html`](overlays/renkli_arka_plan_nikler_1.html)
+### 1. [`renkli_arka_plan_nikler_1.html`](overlays/renkli_arka_plan_nikler_1.html)
 ![colorful_bg_nick_with_text_bg](overlays/images/renkli_arka_plan_nikler_1.png)
 
 ---
