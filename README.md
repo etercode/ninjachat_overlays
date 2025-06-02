@@ -19,9 +19,6 @@ Aşağıdaki HTML dosyaları belirli bir görselle eşleşir:
 
 ## 🚀 Nasıl Kullanılır?
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.  
-Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.
-
 1. HTML dosyasını indirin.
 2. Social Stream Ninja açın youtube id ekleyin. Activate source tıklayın.
 3. Resimde gördüyünüz (2) url sonunda session id var onu kopyalayın.
