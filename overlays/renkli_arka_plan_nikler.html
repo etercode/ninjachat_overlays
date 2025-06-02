@@ -51,7 +51,6 @@ body, html {
     margin-bottom: 0px;
     border-radius: 0px;
     /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); */
-    color: #e4e6eb;
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out,
@@ -130,9 +129,12 @@ body, html {
     word-wrap: break-word;
     display: inline;
     font-weight: bold;
-    background: #393939;
+    background: #00000054;
     padding: 1px 10px;
     border-radius: 15px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    color: #fff;
 }
 
 
@@ -152,11 +154,13 @@ body, html {
 }
 
 .name-bg { 
-    padding: 0 8px 0px 5px;
+    padding: 2px 12px 4px 15px;
     margin-left: 5px;
     display: inline;
     border-radius: 12px;
     font-weight: bold;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .membership-status { color: #ffd700; font-weight: 700; font-size: 0.85em; margin-bottom: 5px; }
@@ -322,17 +326,16 @@ body, html {
         const nickname = data.chatname;
 		let nameHtml = '';
 
-        if ( data.chatname == 'Mehmet CAKAN' ) {
-            nameHtml = data.chatname ? `<div class="name-bg" style="color: #ffd420"><div class="name">👑 Mr.C 👑</div></div>` : '';
-        } 
-        else if (data.chatname == 'devl0pr') {
-            nameHtml = data.chatname ? `<div class="name-bg" style="background: #000000;"><div style="color: #ffd420" class="name">devl0pr <span class="dev">DEV</span></div></div>` : '';
-        } 
-        else {
+        if ( data.chatname == 'Mehmet ÇAKAN' ) {
+            nameHtml = data.chatname ? `<div class="name-bg" style="background: #000000;"><div style="color: #ffd420" class="name">👑 Mr.C 👑</div></div>` : '';
+        } else if (data.chatname == 'devl0pr') {
+            nameHtml = data.chatname ? `<div class="name-bg" ><div style="color: #ffd420" class="name">devl0pr <span class="dev">DEV</span></div></div>` : '';
+        } else {
             // nameHtml = data.chatname ? `<div class="name-bg" ${data.nameColor ? `style="background-color: ${data.nameColor}"` : ''}><div class="name">${nickname}</div></div>` : '';
-            const textColor = getColorFromName(nickname);
+            const bgColor = getBackgroundColorFromName(nickname);
+            const textColor = getTextColor(bgColor);
 
-            nameHtml = data.chatname ? `<div class="name-bg"><div style="color: ${textColor}" class="name">${nickname}</div></div>` : '';
+            nameHtml = data.chatname ? `<div class="name-bg" style="background-color: ${bgColor}; color: ${textColor}"><div class="name">${nickname}</div></div>` : '';
         }
 
 		const membershipHtml = data.membership ? `<div class="membership-status">${data.membership}</div>` : '';
@@ -445,14 +448,32 @@ body, html {
         setupSocket();
     }
 
-    function getColorFromName(name) {
-        // Simple hash function
+    function getTextColor(bgColor) {
+        // Convert HSL to RGB
+        const [h, s, l] = bgColor.match(/\d+/g).map(Number);
+        const a = s / 100;
+        const b = l / 100;
+
+        const f = (n) => {
+            const k = (n + h / 30) % 12;
+            const color = b - a * Math.min(b, 1 - b) * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+            return Math.round(255 * color);
+        };
+
+        const [r, g, b_] = [f(0), f(8), f(4)];
+
+        // Use luminance to decide text color
+        const luminance = 0.299 * r + 0.587 * g + 0.114 * b_;
+        return luminance > 186 ? '#000' : '#fff';
+    }
+
+    function getBackgroundColorFromName(name) {
         let hash = 0;
         for (let i = 0; i < name.length; i++) {
             hash = name.charCodeAt(i) + ((hash << 5) - hash);
         }
-        const hue = hash % 360; // Get a hue between 0-359
-        return `hsl(${hue}, 70%, 60%)`; // Colorful but readable
+        const hue = hash % 360;
+        return `hsl(${hue}, 70%, 45%)`; // Darker but still colorful
     }
 
 </script>
