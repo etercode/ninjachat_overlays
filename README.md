@@ -6,18 +6,12 @@ Bu projede, canlı sohbet sisteminizde kullanıcı takma adlarına dinamik renkl
 
 Aşağıdaki HTML dosyaları belirli bir görselle eşleşir:
 
-### 1. [`colorful_bg_nick_with_text_bg.html`](overlays/colorful_bg_nick_with_text_bg.html)
-![colorful_bg_nick_with_text_bg](overlays/images/colorful_bg_nick_with_text_bg.png)
+### 1. [`colorful_bg_nick_with_text_bg.html`](overlays/renkli_arka_plan_nikler_1.html)
+![colorful_bg_nick_with_text_bg](overlays/images/renkli_arka_plan_nikler_1.png)
 
 ---
 
-### 2. [`colorful_nick_with_text_bg.html`](overlays/colorful_nick_with_text_bg.html)
-![colorful_nick_with_text_bg](overlays/images/colorful_nick_with_text_bg.png)
-
----
-
-### 3. [`colorful_consistent_to_names.html`](overlays/colorful_consistent_to_names.html)
-![colorful_nick_with_text_bg](overlays/images/colorful_nick_with_text_bg.png)
+### 2. [`colorful_consistent_to_names.html`](overlays/colorful_consistent_to_names.html)
 
 > 📌 Bu dosya, takma ada göre tutarlı renk üretimini içerir. Görsel mevcut değildir.
 
