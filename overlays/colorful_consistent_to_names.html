@@ -319,20 +319,19 @@ body, html {
 		const sourceIconHtml = data.type ? `<img src="https://socialstream.ninja/sources/images/${data.type}.png" alt="Source" class="source-icon">` : '';
 		const avatarHtml = data.chatimg ? 
 			`<div class="avatar-wrapper" style="background: ${avatarBorderColor}"><div class="avatar" style="background-image: url('${data.chatimg}');"></div></div>` : '';
-        const nickname = data.chatname == 'devl0pr' ? `👑 devl0pr 👑` : data.chatname;
-        const nicknameColor = (data.chatname == 'devl0pr' ? `#ffd420` : data.nameColor);
-
+        const nickname = data.chatname;
 		let nameHtml = '';
 
         if ( data.chatname == 'Mehmet CAKAN' ) {
             nameHtml = data.chatname ? `<div class="name-bg" style="color: #ffd420"><div class="name">👑 Mr.C 👑</div></div>` : '';
         } else if (data.chatname == 'devl0pr') {
-            nameHtml = data.chatname ? `<div class="name-bg" style="color: #ffd420"><div class="name">devl0pr <span class="dev">DEV</span></div></div>` : '';
+            nameHtml = data.chatname ? `<div class="name-bg" style="background: #000000;"><div style="color: #ffd420" class="name">devl0pr <span class="dev">DEV</span></div></div>` : '';
         } else {
             // nameHtml = data.chatname ? `<div class="name-bg" ${data.nameColor ? `style="background-color: ${data.nameColor}"` : ''}><div class="name">${nickname}</div></div>` : '';
-            const color = getColorFromName(nickname);
-            nameHtml = data.chatname ? `<div class="name-bg"><div class="name" style="color: ${color}">${nickname}</div></div>` : '';
-      
+            const bgColor = getBackgroundColorFromName(nickname);
+            const textColor = getTextColor(bgColor);
+
+            nameHtml = data.chatname ? `<div class="name-bg" style="background-color: ${bgColor}; color: ${textColor}"><div class="name">${nickname}</div></div>` : '';
         }
 
 		const membershipHtml = data.membership ? `<div class="membership-status">${data.membership}</div>` : '';
