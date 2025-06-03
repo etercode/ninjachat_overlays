@@ -15,7 +15,8 @@ body, html {
     width: 100%;
     height: 100%;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background: #00000015;
+    /* background: #ffffff; */
+    background-image: url('../cs.jpg');
     overflow: hidden; /* Prevent body scrollbars */
     box-sizing: border-box;
 }
@@ -51,7 +52,6 @@ body, html {
     margin-bottom: 0px;
     border-radius: 0px;
     /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); */
-    color: #e4e6eb;
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out,
@@ -119,19 +119,33 @@ body, html {
 .name { 
     font-size: 16px;
     display: inline; 
-    color: white;
+    color: #e3e3e3;
     overflow: hidden;
+}
+
+.name-wrapper {
+    display: inline;
+    background: #00000054;
+    padding: 2px 0 4px 0;
+    border-radius: 15px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 1px solid #fffc00;
 }
 
 .text { 
     font-size: 17px;
-    line-height: 1.4;
+    line-height: 1.7;
     margin: 8px 0;
     word-wrap: break-word;
     display: inline;
     font-weight: bold;
-    padding: 1px 10px;
+    background: #00000054;
+    padding: 1px 10px 4px 10px;
     border-radius: 15px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    color: #fff;
 }
 
 
@@ -151,11 +165,13 @@ body, html {
 }
 
 .name-bg { 
-    padding: 0 8px 0px 5px;
+    padding: 2px 7px 4px 7px;
     margin-left: 5px;
     display: inline;
     border-radius: 12px;
     font-weight: bold;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .membership-status { color: #ffd700; font-weight: 700; font-size: 0.85em; margin-bottom: 5px; }
@@ -315,26 +331,30 @@ body, html {
 			messageDiv.style.paddingLeft = '12px';
 		}
 		
-		const sourceIconHtml = data.type ? `<img src="https://socialstream.ninja/sources/images/${data.type}.png" alt="Source" class="source-icon">` : '';
+		const sourceIconHtml = data.type ? `<img style="display:none;" src="https://socialstream.ninja/sources/images/${data.type}.png" alt="Source" class="source-icon">` : '';
 		const avatarHtml = data.chatimg ? 
 			`<div class="avatar-wrapper" style="background: ${avatarBorderColor}"><div class="avatar" style="background-image: url('${data.chatimg}');"></div></div>` : '';
         const nickname = data.chatname;
-		let nameHtml = '';
-        const textColor = getColorFromName(nickname);
 
-        if ( data.chatname == 'Mehmet CAKAN' ) {
-            nameHtml = data.chatname ? `<div class="name-bg" style="color: #ffd420"><div class="name">👑 Mr.C 👑</div></div>` : '';
+        const bgColor = getBackgroundColorFromName(nickname);
+        const textColor = getTextColor(bgColor);
+
+		let nameHtml = '';
+
+        if ( data.chatname == 'Mehmet ÇAKAN' ) {
+            nameHtml = data.chatname ? `<div class="name-bg" style="background: #000000;"><div style="color: #ffd420" class="name">👑 Mr.C 👑</div></div>` : '';
         } else if (data.chatname == 'devl0pr') {
-            nameHtml = data.chatname ? `<div class="name-bg" style="background: #000000;"><div style="color: #ffd420" class="name">devl0pr <span class="dev">DEV</span></div></div>` : '';
+            nameHtml = data.chatname ? `<div class="name-bg" ><div style="color: #ffd420" class="name">devl0pr <span class="dev">DEV</span></div></div>` : '';
         } else {
             // nameHtml = data.chatname ? `<div class="name-bg" ${data.nameColor ? `style="background-color: ${data.nameColor}"` : ''}><div class="name">${nickname}</div></div>` : '';
+            
 
-            nameHtml = data.chatname ? `<div class="name-bg"><div style="color: ${textColor}" class="name">${nickname}</div></div>` : '';
+            nameHtml = data.chatname ? `<div class="name-bg"><div class="name">${nickname}</div></div>` : '';
         }
 
 		const membershipHtml = data.membership ? `<div class="membership-status">${data.membership}</div>` : '';
 
-		const messageTextHtml = `<div class="text" >${data.chatmessage ? data.chatmessage : ''}</div>`;
+		const messageTextHtml = `<div class="text" ${data.event ? 'style="font-style: italic;"' : ''}>${data.chatmessage ? data.chatmessage : ''}</div>`;
 		const donationHtml = data.hasDonation ? `<div class="donation">${data.hasDonation}</div>` : '';
 		
 		const contentImgHtml = data.contentimg ? 
@@ -346,7 +366,7 @@ body, html {
 			<div class="message-content-wrapper">
                 ${sourceIconHtml}
 				<div class="message-text-meta">
-					<div style="display: inline;">
+					<div class="name-wrapper" style="background-color: ${bgColor}; color: ${textColor}">
 						${nameHtml}
 						${chatbadgesHtml}
 					</div>
@@ -442,14 +462,32 @@ body, html {
         setupSocket();
     }
 
-    function getColorFromName(name) {
-        // Simple hash function
+    function getTextColor(bgColor) {
+        // Convert HSL to RGB
+        const [h, s, l] = bgColor.match(/\d+/g).map(Number);
+        const a = s / 100;
+        const b = l / 100;
+
+        const f = (n) => {
+            const k = (n + h / 30) % 12;
+            const color = b - a * Math.min(b, 1 - b) * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+            return Math.round(255 * color);
+        };
+
+        const [r, g, b_] = [f(0), f(8), f(4)];
+
+        // Use luminance to decide text color
+        const luminance = 0.299 * r + 0.587 * g + 0.114 * b_;
+        return luminance > 186 ? '#000' : '#fff';
+    }
+
+    function getBackgroundColorFromName(name) {
         let hash = 0;
         for (let i = 0; i < name.length; i++) {
             hash = name.charCodeAt(i) + ((hash << 5) - hash);
         }
-        const hue = hash % 360; // Get a hue between 0-359
-        return `hsl(${hue}, 70%, 60%)`; // Colorful but readable
+        const hue = hash % 360;
+        return `hsl(${hue}, 70%, 35%)`; // Darker but still colorful
     }
 
 </script>

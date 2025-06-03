@@ -6,16 +6,29 @@ Bu projede, canlı sohbet sisteminizde kullanıcı takma adlarına dinamik renkl
 
 Aşağıdaki HTML dosyaları belirli bir görselle eşleşir:
 
-### 1. [`renkli_arka_plan_nikler.html`](overlays/renkli_arka_plan_nikler.html)
-![renkli_arka_plan_nikler](overlays/images/renkli_arka_plan_nikler.png)
+### 1. Parlak renkli arka plan [`renkli_arka_plan_1.html`](overlays/renkli_arka_plan_1.html)
+![renkli_arka_plan_nikler](overlays/images/renkli_arka_plan_1.png)
+### Az parlak
+![renkli_arka_plan_1](overlays/images/renkli_arka_plan_2.png)
 
+### Parlaklığı artırmak ve ya azaltmak için HTML dosyanın en sonunda `getBackgroundColorFromName` fonksiyonu var orada 35%-i değiştirin. Yukarı % daha parlak aşağısı daha az parlak.
+![hue](hue.png)
 ---
 
 ### 2. [`siyah_arka_renkli_nikler.html`](overlays/siyah_arka_renkli_nikler.html)
-![siyah_arka_renkli_nikler](overlays/images/siyah_arka_renkli_nikler.png)
+![siyah_arka_renkli_nikler](overlays/images/siyah_arka_renkli_1.png)
 
-### 3. In progress
-> 📌 Bu dosya, takma ada göre tutarlı renk üretimini içerir. Görsel mevcut değildir.
+### Az parlak
+![siyah_arka_renkli_nikler](overlays/images/siyah_arka_renkli_2.png)
+
+### Parlaklığı artırmak ve ya azaltmak için HTML dosyanın en sonunda `getColorFromName` fonksiyonu var orada 65%-i değiştirin. Yukarı % daha parlak aşağısı daha az parlak.
+
+
+### 3. [`youtube_kendi_renkleri.html`](overlays/youtube_kendi_renkleri.html)
+![youtube_kendi_renkleri](overlays/images/youtube_kendi_renkleri.png)
+
+### 4. Yeni overlay-lar eklene bilir...
+> 📌 Görsel mevcut değildir.
 
 ---
 
