@@ -6,7 +6,7 @@ Bu projede, canlı sohbet sisteminizde kullanıcı takma adlarına dinamik renkl
 
 Aşağıdaki HTML dosyaları belirli bir görselle eşleşir:
 
-### 1. Parlak renkli arka plan [`renkli_arka_plan_1.html`](overlays/renkli_arka_plan_1.html)
+### 1. Parlak renkli arka plan [`renkli_arka_plan_1.html`](overlays/renkli_arka_plan.html)
 ![renkli_arka_plan_nikler](overlays/images_new/renkli_arkaplan_1.png)
 
 ### Parlaklığı artırmak ve ya azaltmak için HTML dosyanın en sonunda `getBackgroundColorFromName` fonksiyonu var orada 35%-i değiştirin. Yukarı % daha parlak aşağısı daha az parlak.
