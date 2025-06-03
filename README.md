@@ -16,7 +16,7 @@ Aşağıdaki HTML dosyaları belirli bir görselle eşleşir:
 ### 2. [`siyah_arka_renkli_nikler.html`](overlays/siyah_arka_renkli_nikler.html)
 ![siyah_arka_renkli_nikler](overlays/images_new/siyah_arkaplan_1.png)
 
-### Parlaklığı artırmak ve ya azaltmak için HTML dosyanın en sonunda `getColorFromName` fonksiyonu var orada 65%-i değiştirin. Yukarı % daha parlak aşağısı daha az parlak.
+### Parlaklığı artırmak ve ya azaltmak için HTML dosyanın en sonunda `getColorFromName` fonksiyonu var orada 65%-i değiştirin. Yukarı % daha parlak aşağısı daha az parlak. Diğer yüzdeyi de değişe bilirsiniz.
 
 
 ### 3. [`youtube_kendi_renkleri.html`](overlays/youtube_kendi_renkleri.html)
@@ -28,7 +28,7 @@ Aşağıdaki HTML dosyaları belirli bir görselle eşleşir:
 ### 5. [`arka_plansiz.html`](overlays/arka_plansiz.html)
 ![arka_plansiz](overlays/images_new/arka_plansiz_1.png)
 
-### 4. Yeni overlay-lar eklene bilir...
+### 6. Yeni overlay-lar eklene bilir...
 > 📌 Görsel mevcut değildir.
 
 ---
